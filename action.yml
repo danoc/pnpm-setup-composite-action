@@ -1,0 +1,17 @@
+name: 'Install dependencies with pnpm'
+description: 'Checks out the codebase, sets up Node, pnpm, installs dependencies, and manages a cache.'
+runs:
+  using: "composite"
+  steps:
+    - name: Checkout the codebase
+      uses: actions/checkout@v3
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v2.2.4
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version-file: ".node-version"
+        cache: 'pnpm'
+    - name: Install dependencies
+      run: pnpm install --frozen-lockfile
+      shell: bash
