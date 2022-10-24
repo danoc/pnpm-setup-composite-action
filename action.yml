@@ -1,5 +1,10 @@
 name: 'Install dependencies with pnpm'
 description: 'Checks out the codebase, sets up Node, pnpm, installs dependencies, and manages a cache.'
+inputs:
+  checkout-fetch-depth:
+    description: 'Number of commits to fetch. 0 indicates all history for all branches and tags.'
+    required: false
+    default: 1
 runs:
   using: "composite"
   steps:
