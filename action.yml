@@ -4,12 +4,14 @@ inputs:
   checkout-fetch-depth:
     description: 'Number of commits to fetch. 0 indicates all history for all branches and tags.'
     required: false
-    default: 1
+    default: '1'
 runs:
   using: "composite"
   steps:
     - name: Checkout the codebase
       uses: actions/checkout@v3
+      with:
+        fetch-depth: ${{ inputs.checkout-fetch-depth }}
     - name: Setup pnpm
       uses: pnpm/action-setup@v2.2.4
     - name: Setup Node.js
